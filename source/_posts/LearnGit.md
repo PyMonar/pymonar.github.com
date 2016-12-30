@@ -1,7 +1,7 @@
 ---
 title: Learn Git
 date: 2016-06-20 21:29:32
-tags:
+tags: Git
 ---
 
 > 记录一些常用的git命令
