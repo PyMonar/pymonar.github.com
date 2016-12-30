@@ -8,7 +8,7 @@ tags: Git
 
 ### 基本配置
 
-```
+```bash
 git config --global #全局配置
 
 git config --list #配置清单
@@ -22,7 +22,7 @@ git help #帮助
 
 ### 基础
 
-```
+```bash
 git init #初始化仓库
 
 git clone [url] [another name] #从远程仓库克隆
@@ -53,7 +53,7 @@ git checkout -- [file] #取消修改的文件，回到之前的提交状态文�
 
 ### 日志
 
-```
+```bash
 git log #查看日志
 
 git log -p -2 #-p显示文件差异，-2显示最近两次
@@ -92,7 +92,7 @@ git log --author/committer
 
 > --pretty 使用其他格式显示历史提交信息。可用的选项包括 oneline，short，full，fuller 和 format（后跟指定格式）。
 
----
+
 
 > format 选项 说明
 
@@ -130,7 +130,7 @@ git log --author/committer
 
 ### 远程仓库
 
-```
+```bash
 git remote [-v] #查看远程仓库
 
 git remote add [short name] [url] #添加远程仓库
@@ -151,7 +151,7 @@ git remote rm [remote name] #移除远程仓库
 
 ### 标签
 
-```
+```bash
 
 git tag # 查看现有标签
 
@@ -170,7 +170,7 @@ git push [remote] [tag name]/[--tags] #推送标签
 
 ### 分支
 
-```
+```bash
 
 git branch [branch name] #新建分支
 

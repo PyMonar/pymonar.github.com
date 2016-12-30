@@ -7,7 +7,7 @@ tags: React
 > 主要翻译的是React的官方文档[Quick Start](https://facebook.github.io/react/docs/installation.html)部分
 
 ## 安装
----
+
 ### 安装React
 
 官方推荐使用`Yarn`或者`npm`来管理前端依赖。

@@ -5,7 +5,7 @@ tags: React
 ---
 
 ## JSX 简介
----
+
 先看下这句声明：
 ```javascript
 const element = <h1>Hello, world</h1>;
