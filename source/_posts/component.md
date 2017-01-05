@@ -1,6 +1,6 @@
 ---
 title: React Quick Start - 4. 组件与Props
-date: 2017-1-4 15:25:00
+date: 2017-1-5 15:44:00
 tags: React
 ---
 
