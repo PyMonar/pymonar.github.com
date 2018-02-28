@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Git," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="记录一些常用的git命令  基本配置1234567git config --global #全局配置git config --list #配置清单git config --global alias.co checkout #设置别名checkoutgit help #帮助  基础123456789101112131415161718192021git init #初始化仓库git clone [">
+<meta name="keywords" content="Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Learn Git">
+<meta property="og:url" content="http://pymonar.github.io/2016/06/20/LearnGit/index.html">
+<meta property="og:site_name" content="柔水刻刀">
+<meta property="og:description" content="记录一些常用的git命令  基本配置1234567git config --global #全局配置git config --list #配置清单git config --global alias.co checkout #设置别名checkoutgit help #帮助  基础123456789101112131415161718192021git init #初始化仓库git clone [">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-27T14:57:39.960Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Learn Git">
+<meta name="twitter:description" content="记录一些常用的git命令  基本配置1234567git config --global #全局配置git config --list #配置清单git config --global alias.co checkout #设置别名checkoutgit help #帮助  基础123456789101112131415161718192021git init #初始化仓库git clone [">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://pymonar.github.io/2016/06/20/LearnGit/"/>
+
+
+
+
+
+  <title>Learn Git | 柔水刻刀</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">柔水刻刀</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://pymonar.github.io/2016/06/20/LearnGit/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="彭一">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="柔水刻刀">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Learn Git</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-20T21:29:32+08:00">
+                2016-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>记录一些常用的git命令</p>
+</blockquote>
+<h3 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a>基本配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git config --global <span class="comment">#全局配置</span></span><br><span class="line"></span><br><span class="line">git config --list <span class="comment">#配置清单</span></span><br><span class="line"></span><br><span class="line">git config --global alias.co checkout <span class="comment">#设置别名checkout</span></span><br><span class="line"></span><br><span class="line">git <span class="built_in">help</span> <span class="comment">#帮助</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">git init <span class="comment">#初始化仓库</span></span><br><span class="line"></span><br><span class="line">git <span class="built_in">clone</span> [url] [another name] <span class="comment">#从远程仓库克隆</span></span><br><span class="line"></span><br><span class="line">git status <span class="comment">#查看当前状态</span></span><br><span class="line"></span><br><span class="line">git add [file path] <span class="comment">#跟踪当前某文件，纳入版本仓库，add就是放入暂存区的意思，如果是文件夹则会递归纳入</span></span><br><span class="line"></span><br><span class="line">git diff [--cached] <span class="comment">#查看修改文件之后还未暂存的变化，加了参数--cached是查看暂存之后与版本库的变化</span></span><br><span class="line"></span><br><span class="line">git commit [-m] [<span class="comment">#] #提交到版本库所有暂存区域的更新，-a参数会跳过暂存，直接将已跟踪的所有文件直接提交到版本库</span></span><br><span class="line"></span><br><span class="line">git rm [--cached] [file name] <span class="comment">#移除某个文件的跟踪，并将其从文件目录删除，如果加--cached参数的话只是从版本库移除跟踪</span></span><br><span class="line"></span><br><span class="line">git mv [file form] [file to] <span class="comment">#文件重命名</span></span><br><span class="line"></span><br><span class="line">git commit --amend <span class="comment">#修改最后一次提交</span></span><br><span class="line"></span><br><span class="line">git reset HEAD [file] <span class="comment">#取消暂存的文件</span></span><br><span class="line"></span><br><span class="line">git checkout -- [file] <span class="comment">#取消修改的文件，回到之前的提交状态文件</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>.gitignore 文件规则使用glob模式，所谓的 glob 模式是指 shell 所使用的简化了的正则表达式。星号（<code>*</code>）匹配零个或多个任意字符；[abc] 匹配任何一个列在方括号中的字符（这个例子要么匹配一个 a，要么匹配一个 b，要么匹配一个 c）；问号（?）只匹配一个任意字符；如果在方括号中使用短划线分隔两个字符，表示所有在这两个字符范围内的都可以匹配（比如 [0-9] 表示匹配所有 0 到 9 的数字）。</p>
+</blockquote>
+<hr>
+<h3 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> <span class="comment">#查看日志</span></span><br><span class="line"></span><br><span class="line">git <span class="built_in">log</span> -p -2 <span class="comment">#-p显示文件差异，-2显示最近两次</span></span><br><span class="line"></span><br><span class="line">git <span class="built_in">log</span> --<span class="built_in">stat</span> <span class="comment">#显示摘要信息</span></span><br><span class="line"></span><br><span class="line">git <span class="built_in">log</span> --pretty=oneline/short/full/fuller <span class="comment">#提供格式化输出方式</span></span><br><span class="line"></span><br><span class="line">git <span class="built_in">log</span> --pretty=format:<span class="string">"%h - %an, %ar : %s"</span> <span class="comment">#按照自定义格式输出log</span></span><br><span class="line"></span><br><span class="line">git <span class="built_in">log</span> --pretty=format:<span class="string">"%h %s"</span> --graph <span class="comment">#图形化展示</span></span><br><span class="line"></span><br><span class="line">git <span class="built_in">log</span> --since/until/after/before=2.weeks <span class="comment">#特定时间的log</span></span><br><span class="line"></span><br><span class="line">git <span class="built_in">log</span> --author/committer</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>git log 选项 说明</p>
+</blockquote>
+<blockquote>
+<p>-p 按补丁格式显示每个更新之间的差异。</p>
+</blockquote>
+<blockquote>
+<p>–stat 显示每次更新的文件修改统计信息。</p>
+</blockquote>
+<blockquote>
+<p>–shortstat 只显示 –stat 中最后的行数修改添加移除统计。</p>
+</blockquote>
+<blockquote>
+<p>–name-only 仅在提交信息后显示已修改的文件清单。</p>
+</blockquote>
+<blockquote>
+<p>–name-status 显示新增、修改、删除的文件清单。</p>
+</blockquote>
+<blockquote>
+<p>–abbrev-commit 仅显示 SHA-1 的前几个字符，而非所有的 40 个字符。</p>
+</blockquote>
+<blockquote>
+<p>–relative-date 使用较短的相对时间显示（比如，“2 weeks ago”）。</p>
+</blockquote>
+<blockquote>
+<p>–graph 显示 ASCII 图形表示的分支合并历史。</p>
+</blockquote>
+<blockquote>
+<p>–pretty 使用其他格式显示历史提交信息。可用的选项包括 oneline，short，full，fuller 和 format（后跟指定格式）。</p>
+</blockquote>
+<blockquote>
+<p>format 选项 说明</p>
+</blockquote>
+<blockquote>
+<p>%H 提交对象（commit）的完整哈希字串</p>
+</blockquote>
+<blockquote>
+<p>%h 提交对象的简短哈希字串</p>
+</blockquote>
+<blockquote>
+<p>%T 树对象（tree）的完整哈希字串</p>
+</blockquote>
+<blockquote>
+<p>%t 树对象的简短哈希字串</p>
+</blockquote>
+<blockquote>
+<p>%P 父对象（parent）的完整哈希字串</p>
+</blockquote>
+<blockquote>
+<p>%p 父对象的简短哈希字串</p>
+</blockquote>
+<blockquote>
+<p>%an 作者（author）的名字</p>
+</blockquote>
+<blockquote>
+<p>%ae 作者的电子邮件地址</p>
+</blockquote>
+<blockquote>
+<p>%ad 作者修订日期（可以用 -date= 选项定制格式）</p>
+</blockquote>
+<blockquote>
+<p>%ar 作者修订日期，按多久以前的方式显示</p>
+</blockquote>
+<blockquote>
+<p>%cn 提交者(committer)的名字</p>
+</blockquote>
+<blockquote>
+<p>%ce 提交者的电子邮件地址</p>
+</blockquote>
+<blockquote>
+<p>%cd 提交日期</p>
+</blockquote>
+<blockquote>
+<p>%cr 提交日期，按多久以前的方式显示</p>
+</blockquote>
+<blockquote>
+<p>%s 提交说明</p>
+</blockquote>
+<hr>
+<h3 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">git remote [-v] <span class="comment">#查看远程仓库</span></span><br><span class="line"></span><br><span class="line">git remote add [short name] [url] <span class="comment">#添加远程仓库</span></span><br><span class="line"></span><br><span class="line">git fetch [remote name] <span class="comment">#从远程仓库抓取更新，只抓取，并不合并</span></span><br><span class="line"></span><br><span class="line">git push [remote name] [branch name] <span class="comment">#向远程仓库推送更新，推送必须别人没有更新才可以，否则需要先取回本地合并</span></span><br><span class="line"></span><br><span class="line">git remote show [remote name] <span class="comment">#查看远程仓库详情</span></span><br><span class="line"></span><br><span class="line">git remote rename [old name] [new name] <span class="comment">#重命名远程仓库名</span></span><br><span class="line"></span><br><span class="line">git remote rm [remote name] <span class="comment">#移除远程仓库</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">git tag <span class="comment"># 查看现有标签</span></span><br><span class="line"></span><br><span class="line">git tag -a [v1.0] -m [<span class="comment">#] #新建带注释的标签</span></span><br><span class="line"></span><br><span class="line">git show [v1.0] <span class="comment">#查看某个版本信息</span></span><br><span class="line"></span><br><span class="line">git tag [v1.1] <span class="comment">#创建轻量级标签</span></span><br><span class="line"></span><br><span class="line">git tag -a [v1.0] [<span class="built_in">hash</span>] <span class="comment">#给特定提交添加标签</span></span><br><span class="line"></span><br><span class="line">git push [remote] [tag name]/[--tags] <span class="comment">#推送标签</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">git branch [branch name] <span class="comment">#新建分支</span></span><br><span class="line"></span><br><span class="line">git checkout [branch name] <span class="comment">#切换分支</span></span><br><span class="line"></span><br><span class="line">git checkout -b [branch name] <span class="comment">#新建并切换到分支</span></span><br><span class="line"></span><br><span class="line">git merge [branch name] <span class="comment">#在当前分支上合并[branch name]分支</span></span><br><span class="line"></span><br><span class="line">git branch -d [branch name] <span class="comment">#删除分支</span></span><br><span class="line"></span><br><span class="line">git branch [-v]/[-vv] <span class="comment">#给出当前所有分支列表，*号代表当前所在分支</span></span><br><span class="line"></span><br><span class="line">git branch [--merged]/[--no-merged] <span class="comment">#查看那些分支合并进入了当前分支，即哪些分支是当前提交对象的直接上游</span></span><br><span class="line"></span><br><span class="line">git fetch [origin] <span class="comment">#获取服务器端的数据到本地，更新远程分支指向</span></span><br><span class="line"></span><br><span class="line">git push [origin] [master] <span class="comment">#向远程仓库推送自己的数据上去，更新远程分支的指向</span></span><br><span class="line"></span><br><span class="line">git checkout -b [<span class="built_in">local</span> branch name] [remote branch name] <span class="comment">#本地新建分支与远程对应</span></span><br><span class="line"></span><br><span class="line">git checkout --track [remote branch name] <span class="comment">#本地开始跟踪远程分支</span></span><br><span class="line"></span><br><span class="line">git push [origin]  :[branch name] <span class="comment">#删除远程分支名</span></span><br><span class="line"></span><br><span class="line">git rebase [origin/master] <span class="comment">#将自己的修改衍合到主干分支上去</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>git会维护一个HEAD的指针，指向当前分支的顶端。</p>
+</blockquote>
+<blockquote>
+<p>切换分支最好保留一个干净的工作区域。</p>
+</blockquote>
+<blockquote>
+<p>远程分支在本地无法移动，只是一个标记位。远程分支使用[origin]/[master]这种方式展现。</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Git/" rel="tag"># Git</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/17/hello-world/" rel="next" title="你好，世界！">
+                <i class="fa fa-chevron-left"></i> 你好，世界！
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/30/installation/" rel="prev" title="React Quick Start - 1. 安装">
+                React Quick Start - 1. 安装 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="彭一" />
+            
+              <p class="site-author-name" itemprop="name">彭一</p>
+              <p class="site-description motion-element" itemprop="description">坚持与反复之后，柔水终成雕刀</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本配置"><span class="nav-number">1.</span> <span class="nav-text">基本配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基础"><span class="nav-number">2.</span> <span class="nav-text">基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日志"><span class="nav-number">3.</span> <span class="nav-text">日志</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#远程仓库"><span class="nav-number">4.</span> <span class="nav-text">远程仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标签"><span class="nav-number">5.</span> <span class="nav-text">标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支"><span class="nav-number">6.</span> <span class="nav-text">分支</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">彭一</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="React," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="JSX 简介先看下这句声明：1const element = &amp;lt;h1&amp;gt;Hello, world&amp;lt;/h1&amp;gt;; 以上这种标签语法既不是一个字符串也不是HTML。 这就是JSX，一种Javascript语法的一种扩展。官方推荐使用JSX和React搭配来描述UI组件。 JSX产出React的元素。下边主要介绍JSX的基本使用。 将表达式嵌入JSX在JSX中可以使用{}来包含任何j">
+<meta name="keywords" content="React">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React Quick Start - 2. JSX 简介">
+<meta property="og:url" content="http://pymonar.github.io/2016/12/30/jsxintro/index.html">
+<meta property="og:site_name" content="柔水刻刀">
+<meta property="og:description" content="JSX 简介先看下这句声明：1const element = &amp;lt;h1&amp;gt;Hello, world&amp;lt;/h1&amp;gt;; 以上这种标签语法既不是一个字符串也不是HTML。 这就是JSX，一种Javascript语法的一种扩展。官方推荐使用JSX和React搭配来描述UI组件。 JSX产出React的元素。下边主要介绍JSX的基本使用。 将表达式嵌入JSX在JSX中可以使用{}来包含任何j">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-27T14:57:39.961Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React Quick Start - 2. JSX 简介">
+<meta name="twitter:description" content="JSX 简介先看下这句声明：1const element = &amp;lt;h1&amp;gt;Hello, world&amp;lt;/h1&amp;gt;; 以上这种标签语法既不是一个字符串也不是HTML。 这就是JSX，一种Javascript语法的一种扩展。官方推荐使用JSX和React搭配来描述UI组件。 JSX产出React的元素。下边主要介绍JSX的基本使用。 将表达式嵌入JSX在JSX中可以使用{}来包含任何j">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://pymonar.github.io/2016/12/30/jsxintro/"/>
+
+
+
+
+
+  <title>React Quick Start - 2. JSX 简介 | 柔水刻刀</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">柔水刻刀</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://pymonar.github.io/2016/12/30/jsxintro/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="彭一">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="柔水刻刀">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">React Quick Start - 2. JSX 简介</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-30T10:10:00+08:00">
+                2016-12-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="JSX-简介"><a href="#JSX-简介" class="headerlink" title="JSX 简介"></a>JSX 简介</h2><p>先看下这句声明：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = &lt;h1&gt;Hello, world&lt;/h1&gt;;</span><br></pre></td></tr></table></figure></p>
+<p>以上这种标签语法既不是一个字符串也不是HTML。</p>
+<p>这就是<code>JSX</code>，一种Javascript语法的一种扩展。官方推荐使用<code>JSX</code>和<code>React</code>搭配来描述UI组件。</p>
+<p><code>JSX</code>产出<code>React</code>的<code>元素</code>。下边主要介绍<code>JSX</code>的基本使用。</p>
+<h3 id="将表达式嵌入JSX"><a href="#将表达式嵌入JSX" class="headerlink" title="将表达式嵌入JSX"></a>将表达式嵌入JSX</h3><p>在<code>JSX</code>中可以使用<code>{}</code>来包含任何javascript表达式，比如说<code>2+2</code>，<code>user.name</code>或者方法调用<code>formatName(user)</code>等都是合法的表达式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">formatName</span>(<span class="params">user</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> user.firstName + <span class="string">' '</span> + user.lastName;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">    firstName: <span class="string">'Harper'</span>,</span><br><span class="line">    lastName: <span class="string">'Perez'</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> element = (</span><br><span class="line">    &lt;h1&gt;</span><br><span class="line">        Hello, &#123;formatName(user)&#125;!</span><br><span class="line">    &lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">);</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">ReactDOM.render(</span></span><br><span class="line"><span class="regexp">    element,</span></span><br><span class="line"><span class="regexp">    document.getElementById('root')</span></span><br><span class="line"><span class="regexp">);</span></span><br></pre></td></tr></table></figure>
+<h3 id="将JSX放入表达式中"><a href="#将JSX放入表达式中" class="headerlink" title="将JSX放入表达式中"></a>将JSX放入表达式中</h3><p>经过编译，<code>JSX</code>表达式会变为普通的Javascript对象。<br>这意味着你可以在if语句中和for循环中插入<code>JSX</code>语法，也可以将<code>JSX</code>赋值给变量、接受其为参数或者从函数中返回<code>JSX</code>表达式。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getGreeting</span>(<span class="params">user</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (user) &#123;</span><br><span class="line">        <span class="keyword">return</span> &lt;h1&gt;Hello, &#123;formatName(user)&#125;!&lt;/h1&gt;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> &lt;h1&gt;Hello, Stranger.&lt;/h1&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="为JSX设定属性"><a href="#为JSX设定属性" class="headerlink" title="为JSX设定属性"></a>为JSX设定属性</h3><p>可以通过双引号包括的字符串字面量来作为<code>JSX</code>的属性：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = &lt;div tabIndex="0"&gt;&lt;/div&gt;;</span><br></pre></td></tr></table></figure>
+<p>当然也可以通过<code>{}</code>包裹的Javascript表达式来作为属性：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = &lt;img src=&#123;user.avatarUrl&#125;&gt;&lt;/img&gt;;</span><br></pre></td></tr></table></figure>
+<h3 id="为JSX设定子元素"><a href="#为JSX设定子元素" class="headerlink" title="为JSX设定子元素"></a>为JSX设定子元素</h3><p>如果一个标签是空标签，可以使用闭合标签<code>/&gt;</code>来结束标签，像XML一样：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = &lt;img src=&#123;user.avatarUrl&#125; /&gt;;</span><br></pre></td></tr></table></figure>
+<p><code>JSX</code>标签可以包含子元素：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;h1&gt;Hello!&lt;/h1&gt;</span><br><span class="line">        &lt;h2&gt;Good to see you here.&lt;<span class="regexp">/h2&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：由于JSX语法较之HTML更加接近于Javascript，所以React DOM使用驼峰命名的方式来命名属性名，以此来替换HTML中的属性。<br>举个例子比如<code>class</code>在JSX中必须写成<code>className</code>，<code>tabindex</code>必须写成<code>tabIndex</code>。</p>
+</blockquote>
+<h3 id="JSX可以阻止注入攻击"><a href="#JSX可以阻止注入攻击" class="headerlink" title="JSX可以阻止注入攻击"></a>JSX可以阻止注入攻击</h3><p>将用户输入嵌入JSX是安全的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> title = response.potentiallyMaliciousInput;</span><br><span class="line"><span class="comment">// This is safe:</span></span><br><span class="line"><span class="keyword">const</span> element = &lt;h1&gt;&#123;title&#125;&lt;/h1&gt;;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>默认情况下，对于任何嵌入到JSX中的值，React DOM在渲染之前都会进行编码。因此，它确保了在你的应用中你无法注入任何没有明确写明的代码，因为任何东西都会在渲染前被转化成字符串。<br>这种方式可以阻止XSS（跨域站点攻击）。</p>
+<h3 id="JSX代表了一种对象"><a href="#JSX代表了一种对象" class="headerlink" title="JSX代表了一种对象"></a>JSX代表了一种对象</h3><p>Babel通过转码会将JSX编译为<code>React.createElement()</code>的调用：</p>
+<p>以下两种方式是等价的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = (</span><br><span class="line">    &lt;h1 className=<span class="string">"greeting"</span>&gt;</span><br><span class="line">        Hello, world!</span><br><span class="line">    &lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">);</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = React.createElement(</span><br><span class="line">    <span class="string">'h1'</span>,</span><br><span class="line">        &#123;<span class="attr">className</span>: <span class="string">'greeting'</span>&#125;,</span><br><span class="line">    <span class="string">'Hello, world!'</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p><code>React.createElement()</code>可以确保你写出bug更少的代码，它创造出的对象像这样：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Note: this structure is simplified</span></span><br><span class="line"><span class="keyword">const</span> element = &#123;</span><br><span class="line">    type: <span class="string">'h1'</span>,</span><br><span class="line">    props: &#123;</span><br><span class="line">        className: <span class="string">'greeting'</span>,</span><br><span class="line">        children: <span class="string">'Hello, world'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这种对象称为<code>React元素</code>，你可以理解为他们就是页面上UI元素的描述信息。React解析这些对象，并通过他们来构建和更新DOM树。 </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/React/" rel="tag"># React</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/30/installation/" rel="next" title="React Quick Start - 1. 安装">
+                <i class="fa fa-chevron-left"></i> React Quick Start - 1. 安装
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/04/renderelem/" rel="prev" title="React Quick Start - 3. 渲染元素">
+                React Quick Start - 3. 渲染元素 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="彭一" />
+            
+              <p class="site-author-name" itemprop="name">彭一</p>
+              <p class="site-description motion-element" itemprop="description">坚持与反复之后，柔水终成雕刀</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JSX-简介"><span class="nav-number">1.</span> <span class="nav-text">JSX 简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#将表达式嵌入JSX"><span class="nav-number">1.1.</span> <span class="nav-text">将表达式嵌入JSX</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将JSX放入表达式中"><span class="nav-number">1.2.</span> <span class="nav-text">将JSX放入表达式中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为JSX设定属性"><span class="nav-number">1.3.</span> <span class="nav-text">为JSX设定属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为JSX设定子元素"><span class="nav-number">1.4.</span> <span class="nav-text">为JSX设定子元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSX可以阻止注入攻击"><span class="nav-number">1.5.</span> <span class="nav-text">JSX可以阻止注入攻击</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSX代表了一种对象"><span class="nav-number">1.6.</span> <span class="nav-text">JSX代表了一种对象</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">彭一</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
